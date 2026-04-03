@@ -277,7 +277,7 @@ footer{padding:2rem 2.5rem;border-top:0.5px solid var(--border);display:flex;jus
     <div class="panel-tag">For creators</div>
     <div class="panel-title">Apply as creator</div>
     <div class="panel-desc">Global call. You can be a designer, a muralist, or both. No experience with large surfaces required — that is what collaboration is for.</div>
-    <form id="artist-form" onsubmit="handleArtist(event)">
+    <form id="artist-form" action="https://formspree.io/f/xykbnpwe" method="POST">
       <div class="f2">
         <div class="fg"><label class="fl">Name</label><input class="fi" type="text" placeholder="Your name" required></div>
         <div class="fg"><label class="fl">City & country</label><input class="fi" type="text" placeholder="City, Country" required></div>
@@ -314,7 +314,7 @@ footer{padding:2rem 2.5rem;border-top:0.5px solid var(--border);display:flex;jus
     <div class="panel-tag">For space owners</div>
     <div class="panel-title">Offer a Tabula</div>
     <div class="panel-desc">Do you have a blank surface? A wall, a building, a space? It does not have to be a wall — if it can hold a universe, we want to know about it.</div>
-    <form id="wall-form" onsubmit="handleWall(event)">
+    <form id="wall-form" action="https://formspree.io/f/xgopnzkl" method="POST">
       <div class="f2">
         <div class="fg"><label class="fl">Name</label><input class="fi" type="text" placeholder="Your name" required></div>
         <div class="fg"><label class="fl">Email</label><input class="fi" type="email" placeholder="your@email.com" required></div>
@@ -364,16 +364,30 @@ document.querySelectorAll('input[name="submit_type"]').forEach(r=>{
     }
   });
 });
-function handleArtist(e){
+document.getElementById('artist-form').addEventListener('submit',function(e){
   e.preventDefault();
-  document.getElementById('artist-ok').style.display='block';
-  e.target.style.opacity='0.25';e.target.style.pointerEvents='none';
-}
-function handleWall(e){
+  var data = new FormData(this);
+  fetch(this.action,{method:'POST',body:data,headers:{'Accept':'application/json'}})
+    .then(function(r){
+      if(r.ok){
+        document.getElementById('artist-ok').style.display='block';
+        document.getElementById('artist-form').style.opacity='0.25';
+        document.getElementById('artist-form').style.pointerEvents='none';
+      }
+    });
+});
+document.getElementById('wall-form').addEventListener('submit',function(e){
   e.preventDefault();
-  document.getElementById('wall-ok').style.display='block';
-  e.target.style.opacity='0.25';e.target.style.pointerEvents='none';
-}
+  var data = new FormData(this);
+  fetch(this.action,{method:'POST',body:data,headers:{'Accept':'application/json'}})
+    .then(function(r){
+      if(r.ok){
+        document.getElementById('wall-ok').style.display='block';
+        document.getElementById('wall-form').style.opacity='0.25';
+        document.getElementById('wall-form').style.pointerEvents='none';
+      }
+    });
+});
 </script>
 </body>
 </html>
