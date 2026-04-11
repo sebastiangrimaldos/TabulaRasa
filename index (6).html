@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23080808'/><text x='50' y='72' font-family='monospace' font-size='55' font-weight='300' fill='%23f4f3ef' text-anchor='middle'>{ }</text></svg>">
+
+<script>if(location.protocol!=='https:'){location.replace('https://'+location.host+location.pathname+location.search);}</script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tabula Rasa — A space to create universes</title>
+<meta name="description" content="Tabula Rasa is a hybrid platform — physical and digital — that transforms blank surfaces into portals toward creative universes. Open call for artists and space owners worldwide.">
+<meta name="keywords" content="tabula rasa, atabularasa, tabularasa, street art, mural, open call, artists, urban art, community art, Toronto mural">
+<meta property="og:title" content="Tabula Rasa — A space to create universes">
+<meta property="og:description" content="A hybrid platform that transforms blank surfaces into portals toward creative universes. Open call for artists worldwide.">
+<meta property="og:url" content="https://www.atabularasa.com">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tabula Rasa — A space to create universes">
+<meta name="twitter:description" content="A hybrid platform that transforms blank surfaces into portals toward creative universes.">
+<link rel="canonical" href="https://www.atabularasa.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Syne:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--black:#080808;--white:#f4f3ef;--gray:#7a7a78;--gray-light:#c8c7c3;--gray-dark:#1a1a1a;--border:rgba(255,255,255,0.07);}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:'Syne',sans-serif;overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2.5rem;border-bottom:0.5px solid var(--border);background:rgba(8,8,8,0.9);backdrop-filter:blur(16px);}
+.nav-logo{font-size:1rem;font-weight:800;letter-spacing:0.1em;display:flex;align-items:center;gap:0.5rem;}
+.nav-logo .brace{font-family:'DM Mono',monospace;font-weight:300;font-size:1.2rem;color:var(--gray-light);}
+.nav-links{display:flex;gap:2rem;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gray);}
+.nav-links a{transition:color 0.2s;}
+.nav-links a:hover{color:var(--white);}
+
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:56px;}
+.hero-left{display:flex;flex-direction:column;justify-content:flex-end;padding:5rem 3rem 5rem 2.5rem;border-right:0.5px solid var(--border);}
+.hero-eyebrow{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--gray);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:2.5rem;display:flex;align-items:center;gap:0.75rem;}
+.dot{width:5px;height:5px;border-radius:50%;background:var(--gray);display:inline-block;}
+.hero-brace{font-family:'DM Mono',monospace;font-size:clamp(6rem,11vw,9rem);font-weight:300;line-height:0.85;letter-spacing:-0.01em;color:var(--white);margin-bottom:1.25rem;}
+.hero-wordmark{font-size:clamp(1rem,2vw,1.5rem);font-weight:800;letter-spacing:0.3em;text-transform:uppercase;color:var(--gray-light);margin-bottom:3rem;}
+.hero-body{font-family:'DM Mono',monospace;font-size:0.82rem;line-height:1.9;color:var(--gray);font-weight:300;max-width:400px;margin-bottom:3rem;}
+.hero-body strong{color:var(--white);font-weight:400;}
+.cta-row{display:flex;gap:0.75rem;flex-wrap:wrap;}
+.btn{font-family:'Syne',sans-serif;font-size:0.68rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:0.85rem 1.75rem;border:0.5px solid rgba(255,255,255,0.22);background:transparent;color:var(--white);cursor:pointer;transition:all 0.22s;display:inline-block;}
+.btn:hover{background:var(--white);color:var(--black);border-color:var(--white);}
+.btn-fill{background:var(--white);color:var(--black);border-color:var(--white);}
+.btn-fill:hover{background:transparent;color:var(--white);}
+
+.hero-right{position:relative;overflow:hidden;background:#0e0e0e;display:flex;flex-direction:column;justify-content:flex-end;padding:3rem 2.5rem;}
+.coord-display{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;}
+.coord-main{font-family:'DM Mono',monospace;font-size:clamp(0.9rem,2vw,1.4rem);font-weight:300;color:rgba(255,255,255,0.55);letter-spacing:0.12em;line-height:2.2;white-space:nowrap;}
+.coord-sep{display:block;width:0.5px;height:40px;background:rgba(255,255,255,0.12);margin:0.75rem auto;}
+.coord-label{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:0.5rem;}
+.grid-lines{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);background-size:60px 60px;}
+.crosshair{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:12px;height:12px;}
+.crosshair::before,.crosshair::after{content:'';position:absolute;background:rgba(255,255,255,0.35);}
+.crosshair::before{width:1px;height:100%;left:50%;transform:translateX(-50%);}
+.crosshair::after{height:1px;width:100%;top:50%;transform:translateY(-50%);}
+.crosshair-ring{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:32px;height:32px;border-radius:50%;border:0.5px solid rgba(255,255,255,0.2);}
+.hero-right-footer{position:relative;z-index:2;border-top:0.5px solid var(--border);padding-top:1.25rem;display:flex;justify-content:space-between;align-items:flex-end;}
+.tabula-id{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.3);}
+.tabula-status{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--white);border:0.5px solid rgba(255,255,255,0.2);padding:0.25rem 0.6rem;}
+
+section{padding:6rem 2.5rem;border-top:0.5px solid var(--border);}
+.s-tag{font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gray);margin-bottom:1rem;}
+.s-title{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;line-height:1.05;margin-bottom:1.5rem;max-width:600px;}
+.s-body{font-family:'DM Mono',monospace;font-size:0.82rem;line-height:1.9;color:var(--gray);font-weight:300;max-width:540px;}
+.s-body strong{color:var(--white);font-weight:400;}
+
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);margin-top:4rem;border:0.5px solid var(--border);}
+.pillar{padding:2.5rem 2rem;border-right:0.5px solid var(--border);}
+.pillar:last-child{border-right:none;}
+.pillar-n{font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--gray);letter-spacing:0.14em;margin-bottom:1.5rem;}
+.pillar-t{font-size:0.95rem;font-weight:700;margin-bottom:0.75rem;line-height:1.2;}
+.pillar-b{font-family:'DM Mono',monospace;font-size:0.76rem;line-height:1.75;color:var(--gray);font-weight:300;}
+
+.phases{margin-top:3.5rem;border:0.5px solid var(--border);}
+.phase{display:grid;grid-template-columns:72px 1fr;border-bottom:0.5px solid var(--border);}
+.phase:last-child{border-bottom:none;}
+.phase:hover{background:rgba(255,255,255,0.018);}
+.phase-n{font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--gray);padding:2rem 1.5rem;border-right:0.5px solid var(--border);display:flex;align-items:flex-start;letter-spacing:0.1em;}
+.phase-c{padding:2rem;}
+.phase-badge{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;display:inline-block;padding:0.2rem 0.6rem;margin-bottom:0.75rem;}
+.badge-active{color:var(--white);border:0.5px solid rgba(255,255,255,0.25);background:rgba(255,255,255,0.07);}
+.badge-soon{color:var(--gray);border:0.5px solid rgba(255,255,255,0.1);}
+.phase-t{font-size:0.95rem;font-weight:700;margin-bottom:0.5rem;}
+.phase-b{font-family:'DM Mono',monospace;font-size:0.76rem;line-height:1.75;color:var(--gray);font-weight:300;}
+
+.apply-grid{display:grid;grid-template-columns:1fr 1fr;border-top:0.5px solid var(--border);}
+.apply-panel{padding:4rem 2.5rem;border-right:0.5px solid var(--border);}
+.apply-panel:last-child{border-right:none;}
+.panel-tag{font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--gray);margin-bottom:0.75rem;}
+.panel-title{font-size:1.4rem;font-weight:800;margin-bottom:0.5rem;line-height:1.1;}
+.panel-desc{font-family:'DM Mono',monospace;font-size:0.75rem;line-height:1.75;color:var(--gray);margin-bottom:2rem;font-weight:300;}
+
+.fg{margin-bottom:0.9rem;}
+.fl{font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray);display:block;margin-bottom:0.35rem;}
+.fi,.fs,.ft{width:100%;background:transparent;border:0.5px solid rgba(255,255,255,0.12);color:var(--white);padding:0.7rem 0.9rem;font-family:'DM Mono',monospace;font-size:0.78rem;font-weight:300;outline:none;transition:border-color 0.2s;appearance:none;}
+.fi::placeholder,.ft::placeholder{color:rgba(255,255,255,0.18);}
+.fi:focus,.fs:focus,.ft:focus{border-color:rgba(255,255,255,0.35);}
+.fs option{background:var(--black);}
+.ft{resize:vertical;min-height:80px;}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;}
+
+.radio-g{display:flex;flex-direction:column;gap:0.5rem;}
+.radio-o{display:flex;align-items:flex-start;gap:0.75rem;padding:0.75rem 0.9rem;border:0.5px solid rgba(255,255,255,0.1);cursor:pointer;transition:border-color 0.2s;}
+.radio-o:hover{border-color:rgba(255,255,255,0.28);}
+.radio-o input{margin-top:3px;accent-color:var(--white);}
+.radio-l{font-family:'DM Mono',monospace;font-size:0.73rem;font-weight:300;color:var(--gray-light);line-height:1.5;}
+.radio-l strong{color:var(--white);font-weight:400;display:block;margin-bottom:2px;}
+
+.file-w{border:0.5px dashed rgba(255,255,255,0.12);padding:1.5rem;text-align:center;cursor:pointer;transition:border-color 0.2s;}
+.file-w:hover{border-color:rgba(255,255,255,0.3);}
+.file-w input{display:none;}
+.file-lbl{font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--gray);line-height:1.7;letter-spacing:0.05em;}
+.file-lbl span{color:var(--white);}
+
+.sub-btn{width:100%;margin-top:1.25rem;padding:1rem;background:var(--white);color:var(--black);border:none;cursor:pointer;font-family:'Syne',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;transition:background 0.2s;}
+.sub-btn:hover{background:var(--gray-light);}
+.ok-msg{display:none;font-family:'DM Mono',monospace;font-size:0.76rem;color:var(--white);background:rgba(255,255,255,0.04);border:0.5px solid rgba(255,255,255,0.12);padding:1rem 1.25rem;margin-top:1rem;line-height:1.7;font-weight:300;}
+
+footer{padding:2rem 2.5rem;border-top:0.5px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.f-logo{font-family:'DM Mono',monospace;font-size:1rem;font-weight:300;letter-spacing:0.12em;color:rgba(255,255,255,0.2);}
+.f-note{font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--gray);letter-spacing:0.1em;text-transform:uppercase;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+.hero-left>*{animation:fadeUp 0.65s ease both;}
+.hero-eyebrow{animation-delay:0.1s;}
+.hero-brace{animation-delay:0.2s;}
+.hero-wordmark{animation-delay:0.3s;}
+.hero-body{animation-delay:0.4s;}
+.cta-row{animation-delay:0.5s;}
+@keyframes pulse{0%,100%{opacity:0.2;}50%{opacity:0.5;}}
+.crosshair-ring{animation:pulse 3s ease-in-out infinite;}
+
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.25rem; }
+  .nav-logo { font-size: 0.85rem; }
+  .nav-logo .brace { font-size: 1rem; }
+  .nav-links { gap: 1.25rem; font-size: 0.6rem; }
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left { padding: 5rem 1.5rem 3rem; border-right: none; border-bottom: 0.5px solid var(--border); }
+  .hero-brace { font-size: clamp(5rem,22vw,7rem); }
+  .hero-wordmark { font-size: clamp(0.85rem,4vw,1.2rem); letter-spacing:0.2em; margin-bottom:2rem; }
+  .hero-body { font-size:0.78rem; margin-bottom:2rem; }
+  .cta-row { flex-direction:column; }
+  .btn { text-align:center; padding:0.9rem 1.25rem; }
+  .hero-right { min-height:280px; padding:2rem 1.5rem; }
+  .coord-main { font-size:clamp(0.85rem,4vw,1.1rem); }
+  section { padding:4rem 1.5rem; }
+  .pillars { grid-template-columns:1fr; }
+  .pillar { border-right:none; border-bottom:0.5px solid var(--border); }
+  .pillar:last-child { border-bottom:none; }
+  .phase { grid-template-columns:48px 1fr; }
+  .phase-n { padding:1.5rem 1rem; font-size:0.58rem; }
+  .phase-c { padding:1.5rem 1.25rem; }
+  .apply-grid { grid-template-columns:1fr; }
+  .apply-panel { border-right:none; border-bottom:0.5px solid var(--border); padding:3rem 1.5rem; }
+  .apply-panel:last-child { border-bottom:none; }
+  .f2 { grid-template-columns:1fr; }
+  footer { padding:1.5rem; flex-direction:column; align-items:flex-start; gap:0.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo"><span class="brace">{ }</span> Tabula Rasa</div>
+  <div class="nav-links">
+    <a href="#concept">Concept</a>
+    <a href="#phases">Phases</a>
+    <a href="#apply">Apply</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow"><span class="dot"></span> Open call · First Tabula</div>
+    <div class="hero-brace">{ }</div>
+    <div class="hero-wordmark">Tabula Rasa</div>
+    <div class="hero-body">
+      A hybrid platform — physical and digital —<br>
+      that transforms <strong>blank surfaces into portals</strong><br>
+      toward creative universes.<br><br>
+      The first Tabula is open.<br>
+      <strong>Its universe does not exist yet.</strong><br>
+      That is the point.
+    </div>
+    <div class="cta-row">
+      <a href="#apply" class="btn btn-fill">Apply as creator</a>
+      <a href="#apply" class="btn">Offer a Tabula</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <a href="https://www.google.com/maps?q=43.652279,-79.364545" target="_blank" style="position:absolute;inset:0;z-index:1;cursor:crosshair;"></a>
+    <div class="grid-lines"></div>
+    <div class="crosshair-ring"></div>
+    <div class="crosshair"></div>
+    <div class="coord-display">
+      <div class="coord-label">Tabula 001 · Location</div>
+      <div class="coord-main">43.652279° N</div>
+      <span class="coord-sep"></span>
+      <div class="coord-main">79.364545° W</div>
+    </div>
+    <div class="hero-right-footer">
+      <div class="tabula-id">Tabula 001</div>
+      <div class="tabula-status">Open call</div>
+    </div>
+  </div>
+</div>
+
+<section id="concept">
+  <div class="s-tag">00 — What is Tabula Rasa</div>
+  <div class="s-title">A space to create universes.</div>
+  <div class="s-body">
+    A blank surface. An open call. A community that decides who fills it —<br>
+    by doing <strong>real good in the world</strong>.<br><br>
+    Each Tabula is a portal. Physical and digital.<br>
+    What begins as a surface can become a comic, a character,<br>
+    a soundtrack, an entirely new universe.<br><br>
+    <strong>Universes feed other universes.</strong><br>
+    We produce the space. Not the art.
+  </div>
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pillar-n">01</div>
+      <div class="pillar-t">The blank surface</div>
+      <div class="pillar-b">Real spaces in cities around the world. No rules, given to creators through open global calls.</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-n">02</div>
+      <div class="pillar-t">The active community</div>
+      <div class="pillar-b">Voting costs something: real-world good deeds. Volunteering, time, acts of impact. Each action generates tokens to choose the next creator.</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-n">03</div>
+      <div class="pillar-t">The local fabric</div>
+      <div class="pillar-b">Local voices carry more weight. Each Tabula belongs to its neighborhood. Alliances with community organizations activate the social tissue.</div>
+    </div>
+  </div>
+</section>
+
+<section id="phases" style="padding-top:0;">
+  <div class="s-tag">01 — How we grow</div>
+  <div class="s-title">One Tabula at a time.</div>
+  <div class="s-body">This is a living project. We build in stages — each phase opens when the previous one is ready.</div>
+  <div class="phases">
+    <div class="phase">
+      <div class="phase-n">01</div>
+      <div class="phase-c">
+        <div class="phase-badge badge-active">Now open</div>
+        <div class="phase-t">The first Tabula</div>
+        <div class="phase-b">Open call for creators worldwide. Designers, muralists, or both. We also invite space owners to register their blank surfaces anywhere in the world.</div>
+      </div>
+    </div>
+    <div class="phase">
+      <div class="phase-n">02</div>
+      <div class="phase-c">
+        <div class="phase-badge badge-soon">Coming soon</div>
+        <div class="phase-t">The community votes</div>
+        <div class="phase-b">Once creators apply, the community chooses by completing good deeds in the real world. Actions become votes.</div>
+      </div>
+    </div>
+    <div class="phase">
+      <div class="phase-n">03</div>
+      <div class="phase-c">
+        <div class="phase-badge badge-soon">Coming soon</div>
+        <div class="phase-t">The Tabula comes to life</div>
+        <div class="phase-b">The winning creator executes their universe. The surface becomes a portal — scan it and enter the digital world behind it.</div>
+      </div>
+    </div>
+    <div class="phase">
+      <div class="phase-n">04</div>
+      <div class="phase-c">
+        <div class="phase-badge badge-soon">Coming soon</div>
+        <div class="phase-t">New Tabulas, new universes</div>
+        <div class="phase-b">The platform grows. Each universe can inspire the next. Art travels. Surfaces multiply. Communities connect.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="apply" style="padding:4rem 2.5rem 2rem;">
+  <div class="s-tag">02 — Open calls</div>
+  <div class="s-title">Two ways to enter.</div>
+</section>
+
+<div class="apply-grid">
+  <div class="apply-panel">
+    <div class="panel-tag">For creators</div>
+    <div class="panel-title">Apply as creator</div>
+    <div class="panel-desc">Global call. You can be a designer, a muralist, or both. No experience with large surfaces required — that is what collaboration is for.</div>
+    <form id="artist-form" action="https://formspree.io/f/xykbnpwe" method="POST">
+      <div class="f2">
+        <div class="fg"><label class="fl">Name</label><input class="fi" type="text" placeholder="Your name" required></div>
+        <div class="fg"><label class="fl">City & country</label><input class="fi" type="text" placeholder="City, Country" required></div>
+      </div>
+      <div class="fg"><label class="fl">Email</label><input class="fi" type="email" placeholder="your@email.com" required></div>
+      <div class="fg"><label class="fl">Instagram or portfolio</label><input class="fi" type="text" placeholder="@handle or URL"></div>
+      <div class="fg" style="margin-top:1.1rem;">
+        <label class="fl" style="margin-bottom:0.65rem;">Your role</label>
+        <div class="radio-g">
+          <label class="radio-o"><input type="radio" name="role" value="designer" required><span class="radio-l"><strong>Designer only</strong>I create the concept. Others can execute it on the surface.</span></label>
+          <label class="radio-o"><input type="radio" name="role" value="muralist"><span class="radio-l"><strong>Muralist only</strong>I execute on large surfaces. I can work with existing designs or my own.</span></label>
+          <label class="radio-o"><input type="radio" name="role" value="both"><span class="radio-l"><strong>Both</strong>I design and execute. Full universe, from concept to surface.</span></label>
+        </div>
+      </div>
+      <div class="fg" style="margin-top:1.1rem;">
+        <label class="fl" style="margin-bottom:0.65rem;">Would you like to submit a proposal?</label>
+        <div class="radio-g">
+          <label class="radio-o"><input type="radio" name="submit_type" value="register" required><span class="radio-l"><strong>Register only</strong>Count me in. I will share more when the time comes.</span></label>
+          <label class="radio-o"><input type="radio" name="submit_type" value="proposal"><span class="radio-l"><strong>Submit a proposal</strong>I have a concept or design ready to share now.</span></label>
+        </div>
+      </div>
+      <div class="fg" id="file-sec" style="margin-top:1rem;display:none;">
+        <label class="fl">Upload your design (optional)</label>
+        <div class="file-w" onclick="document.getElementById('design-file').click()">
+          <input type="file" id="design-file" accept="image/*,.pdf">
+          <div class="file-lbl"><span>Click to upload</span><br>JPG, PNG or PDF · max 10MB</div>
+        </div>
+      </div>
+      <button type="submit" class="sub-btn">Send application →</button>
+      <div class="ok-msg" id="artist-ok">Your application has been received.<br>We will be in touch. Thank you for wanting to create a universe.</div>
+    </form>
+  </div>
+  <div class="apply-panel">
+    <div class="panel-tag">For space owners</div>
+    <div class="panel-title">Offer a Tabula</div>
+    <div class="panel-desc">Do you have a blank surface? A wall, a building, a space? It does not have to be a wall — if it can hold a universe, we want to know about it.</div>
+    <form id="wall-form" action="https://formspree.io/f/xgopnzkl" method="POST">
+      <div class="f2">
+        <div class="fg"><label class="fl">Name</label><input class="fi" type="text" placeholder="Your name" required></div>
+        <div class="fg"><label class="fl">Email</label><input class="fi" type="email" placeholder="your@email.com" required></div>
+      </div>
+      <div class="fg"><label class="fl">City & country</label><input class="fi" type="text" placeholder="City, Country" required></div>
+      <div class="fg"><label class="fl">Address or coordinates</label><input class="fi" type="text" placeholder="Street address, area, or GPS coords"></div>
+      <div class="fg"><label class="fl">Approximate dimensions</label><input class="fi" type="text" placeholder="e.g. 8m wide × 4m tall"></div>
+      <div class="fg"><label class="fl">Type of surface</label>
+        <select class="fs">
+          <option value="">Select...</option>
+          <option>Wall / building facade</option>
+          <option>Indoor space / lobby</option>
+          <option>Temporary structure</option>
+          <option>Other — I'll describe it</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label class="fl">Upload a photo of your space</label>
+        <div class="file-w" onclick="document.getElementById('wall-file').click()">
+          <input type="file" id="wall-file" accept="image/*">
+          <div class="file-lbl"><span>Click to upload</span><br>JPG or PNG · max 10MB</div>
+        </div>
+      </div>
+      <div class="fg"><label class="fl">Anything else we should know?</label><textarea class="ft" placeholder="Access, conditions, context, what makes this space interesting..."></textarea></div>
+      <button type="submit" class="sub-btn">Register my space →</button>
+      <div class="ok-msg" id="wall-ok">Your space has been registered.<br>We will reach out when the time comes. Thank you for opening your surface.</div>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <div class="f-logo">{ }</div>
+  <div class="f-note">Tabula Rasa · A space to create universes · 2025</div>
+  <a href="https://www.instagram.com/a.tabularasa/" target="_blank" style="font-family:var(--font-mono,'DM Mono',monospace);font-size:0.65rem;color:#7a7a78;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#f4f3ef'" onmouseout="this.style.color='#7a7a78'">@a.tabularasa</a>
+  <a href="mailto:info@atabularasa.com" style="font-family:var(--font-mono, 'DM Mono', monospace);font-size:0.65rem;color:var(--gray,#7a7a78);letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#f4f3ef'" onmouseout="this.style.color='#7a7a78'">info@atabularasa.com</a>
+</footer>
+
+<script>
+document.querySelectorAll('input[name="submit_type"]').forEach(r=>{
+  r.addEventListener('change',function(){
+    document.getElementById('file-sec').style.display=this.value==='proposal'?'block':'none';
+  });
+});
+[document.getElementById('design-file'),document.getElementById('wall-file')].forEach(inp=>{
+  if(!inp)return;
+  inp.addEventListener('change',function(){
+    if(this.files[0]){
+      this.closest('.file-w').querySelector('.file-lbl').innerHTML='<span>'+this.files[0].name+'</span><br>File selected';
+    }
+  });
+});
+document.getElementById('artist-form').addEventListener('submit',function(e){
+  e.preventDefault();
+  var data = new FormData(this);
+  fetch(this.action,{method:'POST',body:data,headers:{'Accept':'application/json'}})
+    .then(function(r){
+      if(r.ok){
+        document.getElementById('artist-ok').style.display='block';
+        document.getElementById('artist-form').style.opacity='0.25';
+        document.getElementById('artist-form').style.pointerEvents='none';
+      }
+    });
+});
+document.getElementById('wall-form').addEventListener('submit',function(e){
+  e.preventDefault();
+  var data = new FormData(this);
+  fetch(this.action,{method:'POST',body:data,headers:{'Accept':'application/json'}})
+    .then(function(r){
+      if(r.ok){
+        document.getElementById('wall-ok').style.display='block';
+        document.getElementById('wall-form').style.opacity='0.25';
+        document.getElementById('wall-form').style.pointerEvents='none';
+      }
+    });
+});
+</script>
+
+<style>
+.float-btn{position:fixed;bottom:2rem;right:2rem;z-index:200;width:48px;height:48px;border-radius:50%;background:var(--white,#f4f3ef);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+.float-btn:hover{background:var(--gray-light,#c8c7c3);transform:scale(1.05);}
+.float-btn svg{width:20px;height:20px;}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:300;align-items:flex-end;justify-content:center;padding:0;}
+.modal-overlay.open{display:flex;}
+.modal-panel{background:#0e0e0e;border:0.5px solid rgba(255,255,255,0.1);width:100%;max-width:480px;padding:2.5rem 2rem;margin:0 auto;position:relative;max-height:90vh;overflow-y:auto;}
+.modal-close{position:absolute;top:1.25rem;right:1.25rem;background:none;border:none;color:rgba(255,255,255,0.4);cursor:pointer;font-family:'DM Mono',monospace;font-size:0.75rem;letter-spacing:0.1em;}
+.modal-close:hover{color:#f4f3ef;}
+.modal-tag{font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:#7a7a78;margin-bottom:0.75rem;}
+.modal-title{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;color:#f4f3ef;margin-bottom:0.5rem;}
+.modal-desc{font-family:'DM Mono',monospace;font-size:0.75rem;line-height:1.75;color:#7a7a78;margin-bottom:1.5rem;font-weight:300;}
+.mfi{width:100%;background:transparent;border:0.5px solid rgba(255,255,255,0.12);color:#f4f3ef;padding:0.7rem 0.9rem;font-family:'DM Mono',monospace;font-size:0.78rem;font-weight:300;outline:none;transition:border-color 0.2s;margin-bottom:0.75rem;box-sizing:border-box;}
+.mfi:focus{border-color:rgba(255,255,255,0.35);}
+.mfi::placeholder{color:rgba(255,255,255,0.18);}
+.mft{width:100%;background:transparent;border:0.5px solid rgba(255,255,255,0.12);color:#f4f3ef;padding:0.7rem 0.9rem;font-family:'DM Mono',monospace;font-size:0.78rem;font-weight:300;outline:none;resize:vertical;min-height:80px;box-sizing:border-box;margin-bottom:0.75rem;}
+.mft::placeholder{color:rgba(255,255,255,0.18);}
+.mft:focus{border-color:rgba(255,255,255,0.35);}
+.mfs{width:100%;background:#0e0e0e;border:0.5px solid rgba(255,255,255,0.12);color:#f4f3ef;padding:0.7rem 0.9rem;font-family:'DM Mono',monospace;font-size:0.78rem;font-weight:300;outline:none;margin-bottom:0.75rem;box-sizing:border-box;appearance:none;}
+.mfs option{background:#0e0e0e;}
+.msub{width:100%;padding:0.9rem;background:#f4f3ef;color:#080808;border:none;cursor:pointer;font-family:'Syne',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;margin-top:0.5rem;transition:background 0.2s;}
+.msub:hover{background:#c8c7c3;}
+.mok{display:none;font-family:'DM Mono',monospace;font-size:0.76rem;color:#f4f3ef;background:rgba(255,255,255,0.04);border:0.5px solid rgba(255,255,255,0.12);padding:1rem;margin-top:1rem;line-height:1.7;font-weight:300;}
+</style>
+
+<button class="float-btn" onclick="document.getElementById('volunteer-modal').classList.add('open')" title="Get involved">
+  <svg viewBox="0 0 24 24" fill="none" stroke="#080808" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+</button>
+
+<div class="modal-overlay" id="volunteer-modal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal-panel">
+    <button class="modal-close" onclick="document.getElementById('volunteer-modal').classList.remove('open')">✕ close</button>
+    <div class="modal-tag">Get involved</div>
+    <div class="modal-title">Be part of it.</div>
+    <div class="modal-desc">Volunteer, contribute, ask questions — however you want to be part of A Tabula Rasa, we want to hear from you.</div>
+    <form id="volunteer-form" action="https://formspree.io/f/xgopnzkl" method="POST">
+      <input class="mfi" type="text" name="name" placeholder="Your name" required>
+      <input class="mfi" type="email" name="email" placeholder="your@email.com" required>
+      <input class="mfi" type="text" name="city" placeholder="City & country">
+      <select class="mfs" name="interest">
+        <option value="">How do you want to get involved?</option>
+        <option>Volunteer — I want to help on the ground</option>
+        <option>Community — I want to vote and participate</option>
+        <option>Ally / Partner — I want to support the project</option>
+        <option>I have a question</option>
+        <option>Something else</option>
+      </select>
+      <textarea class="mft" name="message" placeholder="Tell us more..."></textarea>
+      <button type="submit" class="msub">Send →</button>
+      <div class="mok" id="volunteer-ok">We received your message.<br>We will be in touch. Thank you for wanting to be part of this.</div>
+    </form>
+  </div>
+</div>
+
+<script>
+document.getElementById('volunteer-form').addEventListener('submit',function(e){
+  e.preventDefault();
+  var data=new FormData(this);
+  fetch(this.action,{method:'POST',body:data,headers:{'Accept':'application/json'}})
+    .then(function(r){
+      if(r.ok){
+        document.getElementById('volunteer-ok').style.display='block';
+        document.getElementById('volunteer-form').style.opacity='0.25';
+        document.getElementById('volunteer-form').style.pointerEvents='none';
+      }
+    });
+});
+</script>
+
+</body>
+</html>
